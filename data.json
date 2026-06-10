@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "type": "normal",
+    "typeName": "CÂU HỎI THƯỜNG",
+    "question": "Đảng Cộng sản Việt Nam được thành lập vào ngày, tháng, năm nào?",
+    "options": ["03/02/1930", "30/02/1930", "19/05/1930", "02/09/1945"],
+    "correct": 0
+  },
+  {
+    "id": 2,
+    "type": "normal",
+    "typeName": "CÂU HỎI THƯỜNG",
+    "question": "Ai là Tổng Bí thư đầu tiên của Đảng Cộng sản Việt Nam?",
+    "options": ["Hồ Chí Minh", "Trần Phú", "Lê Duẩn", "Trường Chinh"],
+    "correct": 1
+  },
+  {
+    "id": 3,
+    "type": "speedup",
+    "typeName": "⚡ CÂU TĂNG TỐC",
+    "question": "Luận cương chính trị đầu tiên của Đảng do ai dự thảo?",
+    "options": ["Nguyễn Ái Quốc", "Trần Phú", "Nguyễn Văn Cừ", "Lê Hồng Phong"],
+    "correct": 1
+  },
+  {
+    "id": 4,
+    "type": "bet",
+    "typeName": "🎲 CÂU ĐẶT CƯỢC",
+    "question": "Hội nghị thành lập Đảng Cộng sản Việt Nam diễn ra tại đâu?",
+    "options": ["Hương Cảng (Hồng Kông)", "Quảng Châu (Trung Quốc)", "Cao Bằng (Việt Nam)", "Paris (Pháp)"],
+    "correct": 0
+  },
+  {
+    "id": 5,
+    "type": "steal",
+    "typeName": "⚔️ CÂU CƯỚP ĐIỂM",
+    "question": "Báo cáo chính trị tại Đại hội II của Đảng (1951) đã quyết định đổi tên Đảng thành gì?",
+    "options": ["Đảng Cộng sản Đông Dương", "Đảng Lao động Việt Nam", "Hội nghiên cứu Chủ nghĩa Mác", "Đảng Cộng sản Việt Nam"],
+    "correct": 1
+  },
+  {
+    "id": 6,
+    "type": "lucky",
+    "typeName": "🎁 HỘP QUÀ MAY MẮN",
+    "question": "Chúc mừng! Bạn đã mở được ô May Mắn! Ban tổ chức sẽ tặng bạn +15 điểm hoặc 1 phần quà hiện vật bất ngờ mà không cần trả lời câu hỏi lịch sử!",
+    "options": ["Nhận 15 điểm hệ thống", "Nhận quà hiện vật từ MC", "Nhường quà cho nhóm khác", "Nhân đôi niềm vui"],
+    "correct": 0
+  },
+  {
+    "id": 7,
+    "type": "normal",
+    "typeName": "CÂU HỎI THƯỜNG",
+    "question": "Đại hội lần thứ mấy của Đảng khởi xướng công cuộc Đổi mới đất nước?",
+    "options": ["Đại hội IV (1976)", "Đại hội V (1982)", "Đại hội VI (1986)", "Đại hội VII (1991)"],
+    "correct": 2
+  },
+  {
+    "id": 8,
+    "type": "normal",
+    "typeName": "CÂU HỎI THƯỜNG",
+    "question": "Chủ đề của Đại hội XIII của Đảng tập trung vào điều gì?",
+    "options": ["Đổi mới kinh tế", "Xây dựng chỉnh đốn Đảng và hệ thống chính trị vững mạnh", "Phát triển văn hóa", "Hội nhập quốc tế độc lập"],
+    "correct": 1
+  },
+  {
+    "id": 9,
+    "type": "speedup",
+    "typeName": "⚡ CÂU TĂNG TỐC",
+    "question": "Phong trào cách mạng đầu tiên do Đảng lãnh đạo sau khi thành lập là phong trào nào?",
+    "options": ["Phong trào 1930 - 1931", "Phong trào 1936 - 1939", "Phong trào giải phóng dân tộc 1939 - 1945", "Khởi nghĩa Bắc Sơn"],
+    "correct": 0
+  },
+  {
+    "id": 10,
+    "type": "normal",
+    "typeName": "CÂU HỎI THƯỜNG",
+    "question": "Cương lĩnh xây dựng đất nước trong thời kỳ quá độ lên CNXH (bổ sung, phát triển năm 2011) thông qua tại Đại hội mấy?",
+    "options": ["Đại hội IX", "Đại hội X", "Đại hội XI", "Đại hội XII"],
+    "correct": 2
+  },
+  {
+    "id": 11,
+    "type": "normal",
+    "typeName": "CÂU HỎI THƯỜNG",
+    "question": "Chỉ thị 'Sửa soạn khởi nghĩa' và 'Sắm vũ khí đuổi thù chung' được ban hành trong thời kỳ nào?",
+    "options": ["1930-1931", "1936-1939", "1939-1945", "1946-1954"],
+    "correct": 2
+  },
+  {
+    "id": 12,
+    "type": "steal",
+    "typeName": "⚔️ CÂU CƯỚP ĐIỂM",
+    "question": "Bản Tuyên ngôn Độc lập khai sinh ra nước Việt Nam Dân chủ Cộng hòa được đọc tại đâu?",
+    "options": ["Quảng trường Ba Đình", "Chợ Đồng Xuân", "Nhà hát lớn Hà Nội", "Bến Nhà Rồng"],
+    "correct": 0
+  },
+  {
+    "id": 13,
+    "type": "normal",
+    "typeName": "CÂU HỎI THƯỜNG",
+    "question": "Đảng ta xác định động lực chính của khối đại đoàn kết toàn dân là gì?",
+    "options": ["Liên minh công nhân - nông dân - trí thức", "Toàn thể nhân dân yêu nước", "Kiều bào nước ngoài", "Các giai tầng xã hội giàu có"],
+    "correct": 0
+  },
+  {
+    "id": 14,
+    "type": "speedup",
+    "typeName": "⚡ CÂU TĂNG TỐC",
+    "question": "Chiến dịch lịch sử nào đã chấm dứt hoàn toàn sự thống trị của thực dân Pháp ở Đông Dương?",
+    "options": ["Chiến dịch Điện Biên Phủ", "Chiến dịch Biên giới", "Chiến dịch Việt Bắc", "Chiến dịch Thượng Lào"],
+    "correct": 0
+  },
+  {
+    "id": 15,
+    "type": "normal",
+    "typeName": "CÂU HỎI THƯỜNG",
+    "question": "Hội nghị Trung ương lần thứ 8 (5/1941) đặt nhiệm vụ nào lên hàng đầu?",
+    "options": ["Cách mạng ruộng đất", "Giải phóng dân tộc", "Phát triển văn hóa", "Xây dựng chính quyền dân chủ công nông"],
+    "correct": 1
+  },
+  {
+    "id": 16,
+    "type": "bet",
+    "typeName": "🎲 CÂU ĐẶT CƯỢC",
+    "question": "Điền vào chỗ trống danh ngôn của Hồ Chí Minh: 'Dù phải đốt cháy cả dãy _______ cũng phải kiên quyết giành cho được độc lập!'",
+    "options": ["Trường Sơn", "Hoàng Liên Sơn", "Đông Triều", "Hương Tích"],
+    "correct": 0
+  },
+  {
+    "id": 17,
+    "type": "normal",
+    "typeName": "CÂU HỎI THƯỜNG",
+    "question": "Khẩu hiệu chiến lược của Cách mạng Việt Nam được xác định trong Cương lĩnh đầu tiên là gì?",
+    "options": ["Độc lập dân tộc và Người cày có ruộng", "Đánh đổ phong kiến trước", "Tự do dân chủ", "Tịch thu toàn bộ tài sản tư nhân"],
+    "correct": 0
+  },
+  {
+    "id": 18,
+    "type": "speedup",
+    "typeName": "⚡ CÂU TĂNG TỐC",
+    "question": "Tên gọi đầu tiên của lực lượng vũ trang tiền thân của Quân đội Nhân dân Việt Nam thành lập 12/1944 là gì?",
+    "options": ["Đội Việt Nam Tuyên truyền Giải phóng quân", "Cứu quốc quân", "Du kích Bắc Sơn", "Việt Nam Giải phóng quân"],
+    "correct": 0
+  },
+  {
+    "id": 19,
+    "type": "normal",
+    "typeName": "CÂU HỎI THƯỜNG",
+    "question": "Đại hội đại biểu toàn quốc lần thứ I của Đảng (1935) diễn ra tại địa điểm nào?",
+    "options": ["Ma Cao (Trung Quốc)", "Hương Cảng (Trung Quốc)", "Hà Nội (Việt Nam)", "Vientiane (Lào)"],
+    "correct": 0
+  },
+  {
+    "id": 20,
+    "type": "normal",
+    "typeName": "CÂU HỎI THƯỜNG",
+    "question": "Phương châm tác chiến trong Chiến dịch Điện Biên Phủ đã được Đại tướng Võ Nguyên Giáp thay đổi từ 'Đánh nhanh thắng nhanh' sang gì?",
+    "options": ["Đánh chắc tiến chắc", "Đánh lâu dài", "Đánh bất ngờ phòng thủ diện rộng", "Vừa đánh vừa thương lượng"],
+    "correct": 0
+  },
+  {
+    "id": 21,
+    "type": "normal",
+    "typeName": "CÂU HỎI THƯỜNG",
+    "question": "Ý nghĩa lịch sử quan trọng nhất của Thắng lợi Cách mạng Tháng Tám năm 1945 là gì?",
+    "options": ["Lật đổ chế độ phong kiến ngàn năm và thực dân hơn 80 năm", "Đưa giai cấp tư sản lên nắm quyền", "Mở rộng bờ cõi lãnh thổ", "Xóa bỏ hoàn toàn nạn đói ngay lập tức"],
+    "correct": 0
+  },
+  {
+    "id": 22,
+    "type": "normal",
+    "typeName": "CÂU HỎI THƯỜNG",
+    "question": "Đại hội Đảng toàn quốc lần thứ mấy quyết định lấy tư tưởng Hồ Chí Minh làm kim chỉ nam cùng với chủ nghĩa Mác - Lênin?",
+    "options": ["Đại hội VI", "Đại hội VII", "Đại hội VIII", "Đại hội IX"],
+    "correct": 1
+  },
+  {
+    "id": 23,
+    "type": "speedup",
+    "typeName": "⚡ CÂU TĂNG TỐC",
+    "question": "Hiệp định Geneva về đình chỉ chiến sự ở Việt Nam được ký kết vào năm nào?",
+    "options": ["1946", "1954", "1968", "1973"],
+    "correct": 1
+  },
+  {
+    "id": 24,
+    "type": "normal",
+    "typeName": "CÂU HỎI THƯỜNG",
+    "question": "Thành tựu to lớn của chặng đường 40 năm đổi mới (1986-2026) chứng minh điều gì về đường lối của Đảng?",
+    "options": ["Hoàn toàn đúng đắn, sáng tạo và phù hợp thực tiễn", "Cần thay đổi toàn diện sang mô hình phương Tây", "Chỉ tập trung phát triển nông nghiệp", "Gặp nhiều khủng hoảng chưa thể khắc phục"],
+    "correct": 0
+  },
+  {
+    "id": 25,
+    "type": "mine",
+    "typeName": "💣 CÂU DÍNH MÌN",
+    "question": "Ủy ban Thường vụ Quốc hội được gọi là cơ quan thường trực của Quốc hội, có nhiệm vụ gì?",
+    "options": ["Lập pháp và giám sát quyền hành pháp", "Kiểm tra và giám sát việc thi hành pháp luật của Chính phủ", "Bầu Tổng Bí thư của Đảng", "Quản lý tài chính quốc gia"],
+    "correct": 1
+  }
+]
