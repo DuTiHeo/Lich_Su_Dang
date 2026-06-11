@@ -142,7 +142,7 @@ function openPowerModal() {
         case "steal":
             title.innerText = "CÂU CƯỚP ĐIỂM";
             icon.innerText = "⚔️";
-            desc.innerText = `Ô độc quyền kích hoạt! Trả lời đúng nhận 10 điểm và cướp 10 điểm của 1 đội khác. Trả lời sai ${currentTeamName} bị TRỪ 10 điểm!`;
+            desc.innerText = `Ô độc quyền kích hoạt! Trả lời đúng nhận 10 điểm và cướp 10 điểm của 1 đội khác (Tổng điểm nhận là 20 điểm). Trả lời sai ${currentTeamName} bị TRỪ 10 điểm!`;
             
             // Render danh sách các đội hợp lệ để cướp (điểm >= 10 và không phải chính mình)
             const targetSelect = document.getElementById("steal-target-team");
@@ -287,7 +287,7 @@ function handleMainTeamAnswer(selectedIndex) {
         } else if (currentQuestion.type === "bet") {
             currentTeam.score += currentBetAmount;
         } else if (currentQuestion.type === "steal") {
-            currentTeam.score += 10;
+            currentTeam.score += 20; // Cướp đúng được 20 điểm (10 điểm thưởng + 10 điểm cướp)
             if (currentStealTargetTeamId) {
                 const victim = teams.find(t => t.id === currentStealTargetTeamId);
                 if (victim) victim.score -= 10; // Trừ điểm đội bị cướp
