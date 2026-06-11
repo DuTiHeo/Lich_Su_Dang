@@ -189,7 +189,7 @@ function closePowerAndOpenQuestion() {
         const val = document.getElementById("steal-target-team").value;
         currentStealTargetTeamId = val === "none" ? null : parseInt(val);
     }
-
+    
     closeModal("power-modal");
 
     // Nếu là ô may mắn, cộng điểm luôn và không cần hiện câu hỏi trắc nghiệm phức tạp
@@ -261,10 +261,16 @@ function handleMainTeamAnswer(selectedIndex) {
     const isCorrect = selectedIndex === currentQuestion.correct;
     const optionsButtons = document.getElementById("options-grid").getElementsByClassName("option-btn");
     
-    // Highlight màu đáp án đúng và sai trực quan trên giao diện
-    optionsButtons[currentQuestion.correct].classList.add("correct-choice");
+    // Nếu sai thì luôn highlight màu đáp án sai
     if (!isCorrect) {
         optionsButtons[selectedIndex].classList.add("wrong-choice");
+    }
+
+    // Chỉ show đáp án đúng nếu: Trả lời đúng HOẶC (Trả lời sai nhưng là câu không cho cướp quyền)
+    const canSteal = (currentQuestion.type === "normal" || currentQuestion.type === "speedup");
+
+    if (isCorrect || !canSteal) {
+        optionsButtons[currentQuestion.correct].classList.add("correct-choice");
     }
 
     const currentTeam = teams[currentTeamIndex];
@@ -505,7 +511,6 @@ function submitReboundAnswer(teamId, selectedIndex) {
         if (isCorrect) {
             optionsButtons[currentQuestion.correct].classList.add("correct-choice");
         } else {
-            optionsButtons[currentQuestion.correct].classList.add("correct-choice");
             optionsButtons[selectedIndex].classList.add("wrong-choice");
         }
     }
