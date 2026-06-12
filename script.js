@@ -435,27 +435,14 @@ function openReboundModal() {
     refreshReboundTeamsPool();
     modal.classList.add("active");
 
-    // Chạy đếm ngược 10 giây cho các đội giơ tay (đếm ngược lựa chọn)
-    reboundTimeLeft = 10;
-    document.getElementById("rebound-timer").innerText = reboundTimeLeft;
-    
+    // Đã XÓA bộ đếm ngược 10 giây ở đây
     clearInterval(reboundTimerInterval);
-    reboundTimerInterval = setInterval(() => {
-        reboundTimeLeft--;
-        document.getElementById("rebound-timer").innerText = reboundTimeLeft;
-        if (reboundTimeLeft <= 0) {
-            clearInterval(reboundTimerInterval);
-            // Nếu hết 10 giây mà quản trò chưa chọn ai giơ tay tức là không đội nào muốn cướp
-            document.getElementById("rebound-result-area").classList.remove("hidden");
-            document.getElementById("rebound-status-text").innerHTML = "<span style='color:#bbb;'>Không có đội nào cướp quyền. Lượt chơi kết thúc!</span>";
-            const resultBtn = document.getElementById("rebound-result-area").querySelector("button");
-            if (resultBtn) {
-                resultBtn.className = "btn btn-success";
-                resultBtn.innerText = "HOÀN THÀNH LƯỢT CHƠI";
-                resultBtn.onclick = () => finishQuestionTurn();
-            }
-        }
-    }, 1000);
+    
+    // Ẩn hoặc đổi text đồng hồ cướp quyền (nếu có element này)
+    const timerEl = document.getElementById("rebound-timer");
+    if(timerEl) {
+        timerEl.innerText = "∞"; // Hiển thị vô cực vì không giới hạn thời gian nữa
+    }
 }
 
 // CẬP NHẬT DANH SÁCH CÁC ĐỘI CÓ QUYỀN GIƠ TAY CƯỚP QUYỀN (LOẠI BỎ ĐỘI ĐÃ SAI)
@@ -491,7 +478,7 @@ function refreshReboundTeamsPool() {
 
 // QUẢN TRÒ CLICK CHỌN ĐỘI BẤM CHUÔNG / GIƠ TAY NHANH NHẤT
 function selectTeamToRebound(teamId) {
-    clearInterval(reboundTimerInterval); // Dừng đồng hồ đếm ngược 10 giây
+    clearInterval(reboundTimerInterval); 
     
     currentReboundTeamId = teamId;
     const selectedTeam = teams.find(t => t.id === teamId);
@@ -515,26 +502,8 @@ function selectTeamToRebound(teamId) {
     optionsGrid.innerHTML = "";
     optionsGrid.classList.remove("hidden");
 
-    // Đặt lại thời gian trả lời dựa trên số lượng team còn lại
-    const eligibleTeams = teams.filter(t => !excludedTeamsForRebound.includes(t.id));
-    const teamPosition = eligibleTeams.findIndex(t => t.id === teamId);
-    const answerTime = reboundTeamAnswerTimes[teamPosition] || 3; // Mặc định 3s nếu vượt quá
+    // Đã XÓA bộ đếm ngược 5-3 giây trả lời ở đây
     
-    let answerTimeLeft = answerTime;
-    document.getElementById("rebound-timer").innerText = answerTimeLeft;
-    
-    // Chạy đếm ngược cho thời gian trả lời (5s, 4s, 3s, 3s)
-    clearInterval(reboundTimerInterval);
-    reboundTimerInterval = setInterval(() => {
-        answerTimeLeft--;
-        document.getElementById("rebound-timer").innerText = answerTimeLeft;
-        if (answerTimeLeft <= 0) {
-            clearInterval(reboundTimerInterval);
-            // Hết giờ, treat như sai và cho team khác cướp
-            submitReboundAnswer(teamId, -1); // -1 = hết giờ không trả lời
-        }
-    }, 1000);
-
     // Hiện lại 4 đáp án để quản trò bấm lựa chọn theo câu trả lời của nhóm cướp đó
     currentQuestion.options.forEach((optionText, index) => {
         const btn = document.createElement("button");
@@ -547,20 +516,19 @@ function selectTeamToRebound(teamId) {
 
 // XỬ LÝ ĐÁP ÁN ĐỘI CƯỚP QUYỀN CHỌN
 function submitReboundAnswer(teamId, selectedIndex) {
-    clearInterval(reboundTimerInterval); // Dừng timer
+    clearInterval(reboundTimerInterval); 
     
-    const isCorrect = selectedIndex === currentQuestion.correct && selectedIndex !== -1; // -1 = timeout
+    // Đã bỏ -1 (timeout) vì thời gian không còn bị giới hạn
+    const isCorrect = selectedIndex === currentQuestion.correct; 
     const targetTeam = teams.find(t => t.id === teamId);
     
     const optionsButtons = document.getElementById("rebound-options-grid").getElementsByClassName("option-btn");
     
-    // CHỈ hiển thị đáp án đúng nếu trả lời sai (không hiển thị nếu hết giờ)
-    if (selectedIndex !== -1) {
-        if (isCorrect) {
-            optionsButtons[currentQuestion.correct].classList.add("correct-choice");
-        } else {
-            optionsButtons[selectedIndex].classList.add("wrong-choice");
-        }
+    // CHỈ hiển thị đáp án đúng nếu trả lời sai
+    if (isCorrect) {
+        optionsButtons[currentQuestion.correct].classList.add("correct-choice");
+    } else {
+        optionsButtons[selectedIndex].classList.add("wrong-choice");
     }
 
     // Vô hiệu hóa click tiếp
@@ -589,14 +557,9 @@ function submitReboundAnswer(teamId, selectedIndex) {
         resultBtn.innerText = "HOÀN THÀNH LƯỢT CHƠI";
         resultBtn.onclick = () => finishQuestionTurn();
     } else {
-        // Cướp sai hoặc hết giờ: Bị trừ 10 điểm làm áp lực (nếu không phải hết giờ)
-        if (selectedIndex !== -1) {
-            targetTeam.score -= 10;
-            statusText.innerHTML = `<span style="color:#c92a2a;">${targetTeam.name} CƯỚP SAI! (-10đ)</span>`;
-        } else {
-            statusText.innerHTML = `<span style="color:#c92a2a;">${targetTeam.name} HẾT GIỜ! (-5đ)</span>`;
-            targetTeam.score -= 5; // Trừ nhẹ hơn nếu là hết giờ để khuyến khích vẫn cho cướp
-        }
+        // Cướp sai: Bị trừ 10 điểm làm áp lực
+        targetTeam.score -= 10;
+        statusText.innerHTML = `<span style="color:#c92a2a;">${targetTeam.name} CƯỚP SAI! (-10đ)</span>`;
         renderScoreboard();
 
         // Đưa đội vừa trả lời sai vào danh sách đen loại trừ
@@ -618,26 +581,10 @@ function submitReboundAnswer(teamId, selectedIndex) {
             actionBtn.innerText = "TIẾP TỤC CHO ĐỘI KHÁC CƯỚP QUYỀN ⚔️";
             actionBtn.className = "btn btn-danger";
             actionBtn.onclick = () => {
-                // Mở lại vòng đếm ngược mới 11s cho các đội còn lại
+                // Refresh lại pool mà KHÔNG CÓ đếm ngược thời gian
                 document.getElementById("rebound-options-grid").classList.add("hidden");
                 resultArea.classList.add("hidden");
                 refreshReboundTeamsPool();
-                
-                reboundTimeLeft = 10;
-                document.getElementById("rebound-timer").innerText = reboundTimeLeft;
-                clearInterval(reboundTimerInterval);
-                reboundTimerInterval = setInterval(() => {
-                    reboundTimeLeft--;
-                    document.getElementById("rebound-timer").innerText = reboundTimeLeft;
-                    if(reboundTimeLeft <= 0) {
-                        clearInterval(reboundTimerInterval);
-                        resultArea.classList.remove("hidden");
-                        statusText.innerHTML = "<span style='color:#bbb;'>Hết thời gian cướp quyền!</span>";
-                        actionBtn.innerText = "ĐÓNG VÀ HOÀN THÀNH LƯỢT";
-                        actionBtn.className = "btn btn-success";
-                        actionBtn.onclick = () => finishQuestionTurn();
-                    }
-                }, 1000);
             };
         }
     }
