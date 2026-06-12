@@ -107,6 +107,19 @@ function handleCellClick(cellNumber) {
     openPowerModal();
 }
 
+// HÀM TỐ TOÁN CÁC MỨC CƯỢC HỢP LỆ
+function calculateValidBetAmounts(teamScore) {
+    const amounts = [];
+    for (let i = 10; i <= teamScore; i += 10) {
+        amounts.push(i);
+    }
+    // Nếu điểm không phải bội của 10, thêm điểm hiện tại làm mức cược tối đa
+    if (teamScore % 10 !== 0 && teamScore >= 10) {
+        amounts.push(teamScore);
+    }
+    return amounts.sort((a, b) => a - b);
+}
+
 // 5. HIỂN THỊ MODAL QUYỀN ĐẶC BIỆT
 function openPowerModal() {
     const modal = document.getElementById("power-modal");
@@ -121,6 +134,7 @@ function openPowerModal() {
     stealArea.classList.add("hidden");
 
     const currentTeamName = teams[currentTeamIndex].name;
+    const currentTeamScore = teams[currentTeamIndex].score;
 
     switch(currentQuestion.type) {
         case "normal":
@@ -134,10 +148,31 @@ function openPowerModal() {
             desc.innerText = `Cơ hội bứt phá! Trả lời đúng cộng thẳng 20 điểm. Trả lời sai không trừ điểm. Các nhóm khác cướp đúng nhận 10 điểm.`;
             break;
         case "bet":
-            title.innerText = "CÂU ĐẶT CƯỢC";
-            icon.innerText = "🎲";
-            desc.innerText = `${currentTeamName} lật trúng ô Đặt cược! Hãy chọn mức điểm cược trước khi xem câu hỏi. Đúng cộng bằng số điểm cược, sai TRỪ tương ứng!`;
-            betArea.classList.remove("hidden");
+            // Kiểm tra nếu điểm < 10 thì skip câu hỏi
+            if (currentTeamScore < 10) {
+                title.innerText = "CÂU ĐẶT CƯỢC - BỎ QUA";
+                icon.innerText = "🚫";
+                desc.innerText = `${currentTeamName} có ${currentTeamScore} điểm (< 10 điểm). Điều kiện không đủ để cược, lượt này tự động bỏ qua. Ô sẽ được mở và chuyển sang đội khác!`;
+                // Thêm flag để xử lý skip trong closePowerAndOpenQuestion
+                currentQuestion.skipBet = true;
+            } else {
+                title.innerText = "CÂU ĐẶT CƯỢC";
+                icon.innerText = "🎲";
+                desc.innerText = `${currentTeamName} lật trúng ô Đặt cược! Hãy chọn mức điểm cược trước khi xem câu hỏi. Đúng cộng bằng số điểm cược, sai TRỪ tương ứng!`;
+                
+                // Tính toán và hiển thị các mức cược hợp lệ
+                const validAmounts = calculateValidBetAmounts(currentTeamScore);
+                const betSelect = document.getElementById("bet-amount");
+                betSelect.innerHTML = "";
+                validAmounts.forEach(amount => {
+                    const opt = document.createElement("option");
+                    opt.value = amount;
+                    opt.innerText = `${amount} Điểm`;
+                    betSelect.appendChild(opt);
+                });
+                
+                betArea.classList.remove("hidden");
+            }
             break;
         case "steal":
             title.innerText = "CÂU CƯỚP ĐIỂM";
@@ -183,7 +218,9 @@ function openPowerModal() {
 function closePowerAndOpenQuestion() {
     // Lưu các thông số cấu hình do quản trò nhập chọn từ trước
     if (currentQuestion.type === "bet") {
-        currentBetAmount = parseInt(document.getElementById("bet-amount").value);
+        if (!currentQuestion.skipBet) {
+            currentBetAmount = parseInt(document.getElementById("bet-amount").value);
+        }
     }
     if (currentQuestion.type === "steal") {
         const val = document.getElementById("steal-target-team").value;
@@ -201,6 +238,17 @@ function closePowerAndOpenQuestion() {
         document.getElementById(`cell-${currentSelectedCell}`).classList.add("opened");
         
         // Chuyển lượt luôn sang nhóm tiếp theo
+        nextTeamTurn();
+        checkGameEnd();
+        return;
+    }
+
+    // Nếu là ô cược điểm mà điểm không đủ, bỏ qua luôn
+    if (currentQuestion.type === "bet" && currentQuestion.skipBet) {
+        // Làm biến mất ô vừa chọn
+        document.getElementById(`cell-${currentSelectedCell}`).classList.add("opened");
+        
+        // Chuyển lượt sang nhóm tiếp theo
         nextTeamTurn();
         checkGameEnd();
         return;
@@ -543,10 +591,10 @@ function submitReboundAnswer(teamId, selectedIndex) {
     } else {
         // Cướp sai hoặc hết giờ: Bị trừ 10 điểm làm áp lực (nếu không phải hết giờ)
         if (selectedIndex !== -1) {
-            targetTeam.score -= 5;
+            targetTeam.score -= 10;
             statusText.innerHTML = `<span style="color:#c92a2a;">${targetTeam.name} CƯỚP SAI! (-10đ)</span>`;
         } else {
-            statusText.innerHTML = `<span style="color:#c92a2a;">${targetTeam.name} HẾT GIỜ! (-10đ)</span>`;
+            statusText.innerHTML = `<span style="color:#c92a2a;">${targetTeam.name} HẾT GIỜ! (-5đ)</span>`;
             targetTeam.score -= 5; // Trừ nhẹ hơn nếu là hết giờ để khuyến khích vẫn cho cướp
         }
         renderScoreboard();
