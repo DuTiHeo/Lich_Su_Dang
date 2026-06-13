@@ -107,9 +107,9 @@
     "id": 14,
     "type": "speedup",
     "typeName": "⚡ CÂU TĂNG TỐC",
-    "question": "Trong 6 nhiệm vụ trọng tâm của đại hội XIII nêu rõ: Đẩy mạnh nghiên cứu, chuyển giao, ứng dụng tiến bộ khoa học và công nghệ, đổi mới sáng tạo, nhất là những thành tựu của cuộc Cách mạng công nghiệp...",
-    "options": ["Lần thứ hai", "Lần thứ ba", "Lần thứ tư", "Lần thứ năm"],
-    "correct": 2
+    "question": "Hãy nối đúng nhất giữa Hội nghị Trung ương với các Nội dung tương ứng:\n1. Hội nghị TW 4\n2. Hội nghị TW 5\n3. Hội nghị TW 6\n4. Hội nghị TW 7\n\na. Phát triển kinh tế tư nhân và hoàn thiện thể chế kinh tế thị trường.\nb. Xây dựng đội ngũ cán bộ các cấp.\nc. Chăm sóc, nâng cao sức khỏe nhân dân và công tác dân số.\nd. Chống \"tự diễn biến\", \"tự chuyển hóa\".",
+    "options": ["1-a, 2-b, 3-c, 4-d", "1-d, 2-a, 3-c, 4-b", "1-d, 2-c, 3-a, 4-b", "1-b, 2-a, 3-d, 4-c"],
+    "correct": 1
   },
   {
     "id": 15,
@@ -163,9 +163,9 @@
     "id": 21,
     "type": "normal",
     "typeName": "CÂU HỎI THƯỜNG",
-    "question": "Chủ đề của Đại hội XIII nhấn mạnh mục tiêu nào sau đây?",
-    "options": ["Xây dựng nước Việt Nam giàu tài nguyên", "Xây dựng đất nước phồn vinh, hạnh phúc", "Trở thành cường quốc quân sự hàng đầu châu Á", "Phát triển kinh tế tư nhân là chủ yếu"],
-    "correct": 1
+    "question": "Theo Quy định về trách nhiệm nêu gương được thông qua tại Hội nghị TW 8 khóa XII, những đối tượng nào được yêu cầu phải thực hiện nêu gương trước tiên và cao nhất?",
+    "options": ["Toàn thể đảng viên trong cả nước", "Cán bộ lãnh đạo cấp xã, phường và thị trấn", "Cán bộ, công chức làm việc trong các cơ quan nhà nước", "Ủy viên Bộ Chính trị, Ủy viên Ban Bí thư, Ủy viên Ban Chấp hành Trung ương"],
+    "correct": 3
   },
   {
     "id": 22,
